@@ -1,0 +1,32 @@
+body {
+  width: 500px;
+  border: 1px solid #CCC;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.25);
+  border-width: 0 1px 1px 1px;
+  margin: 0 auto;
+  padding: 1em;
+  overflow: hidden;
+}
+html {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font: 2em Helvetica, Arial, Sans-Serif;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+}
+button {
+  margin: 0;
+}
+button + button {
+  float: right;
+}
+textarea {
+  display: block;
+  width: 494px;
+  height: 100px;
+  margin-bottom: 1em;
+}
+iframe { display: none; }
