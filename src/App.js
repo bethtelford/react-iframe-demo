@@ -29,14 +29,11 @@ class App extends Component {
 
   evaluate(frame) {
     var code = this.state.value;
-    // Note that we're sending the message to "*", rather than some specific
-    // origin. Sandboxed iframes which lack the 'allow-same-origin' header
-    // don't have an origin which you can target: you'll have to send to any
-    // origin, which might alow some esoteric attacks. Validate your output!
     frame.contentWindow.postMessage(code, '*');
   }
   setResult(e) {
-    if (e.origin === "null" && e.source === this.sandbox.contentWindow) {
+    console.log('app receives', e)
+    if (e.origin === "null" && e.source === this.refsSandbox.contentWindow) {
       this.setState({
         result: e.data
       })
@@ -59,8 +56,8 @@ class App extends Component {
           value={this.state.value}
           name="UNIQUE_ID_OF_DIV"
         />
-        <button onClick={() => {this.evaluate(this.sandbox)}}>eval()</button>
-        <iframe ref={el => this.sandbox = el} src='http://localhost:3000/frame.html' sandbox='allow-scripts'></iframe>
+        <button onClick={() => {this.evaluate(this.refsSandbox)}}>eval()</button>
+        <iframe ref={el => this.refsSandbox = el} src='http://localhost:3000/frame.html' sandbox='allow-scripts'></iframe>
       </div>
     );
   }

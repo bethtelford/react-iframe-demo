@@ -16,6 +16,7 @@
         try {
           result = eval(e.data);
         } catch (e) {
+          console.log(e)
           result = 'eval() threw an exception.';
         }
         mainWindow.postMessage(result, e.origin);
